@@ -1,16 +1,19 @@
 defmodule Evi1 do
 
-  def exec(str) do
+  def exec() do
     contenido = (
-      str
+      File.read("prueba.js")
+      |> elem(1)
       |> to_charlist()
       |> :scanner.string()
       |> elem(1)
+      |> IO.inspect()
       |> Enum.map(fn {token, cl} ->
         case token do
           :keyword -> "<code style=\"color:blue\">#{to_string(cl)}</code>"
           :identifier -> "<code style=\"color:lightblue\">#{to_string(cl)}</code>"
-          :normal -> "<code style=\"color:white\">#{to_string(cl)}</code>"
+          :operadores -> "<code style=\"color:white\">#{to_string(cl)}</code>"
+          :puntuacion -> "<code style=\"color:white\">#{to_string(cl)}</code>"
           :string -> "<code style=\"color:purple\">#{to_string(cl)}</code>"
           :integer -> "<code style=\"color:lightgreen\">#{to_string(cl)}</code>"
           :float -> "<code style=\"color:lightgreen\">#{to_string(cl)}</code>"
