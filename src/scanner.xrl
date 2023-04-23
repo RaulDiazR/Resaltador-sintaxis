@@ -2,19 +2,30 @@ Definitions.
 D = [0-9]
 L = [a-z]
 LM = [a-zA-Z]
-ID = [A-Za-z_$][A-Za-z0-9_$]*.
+ID = [A-Za-z_$][A-Za-z0-9_$]*
 
 Rules.
-{D}+              :  {token, {integer, TokenChars}}. 
-[+-]?({D}+\.{D}*|{D}*\.{D}+)([eE][+-]?{D}+)?              :  {token, {float, TokenChars}}. 
+% Numeros
+{D}+(_?{D})*([eE][+-]?{D}+(_?{D})*)?n?  :  {token, {number, TokenChars}}. %entero
+[+-]?({D}+(_?{D})*\.({D}(_?{D})*)*|({D}(_?{D})*)*\.{D}+(_?{D})*)([eE][+-]?{D}+(_?{D})*)?  :  {token, {number, TokenChars}}. %float
+
+
+% Identificadores
 % {LM}({LM}|{D})*   :  {token, analyze(TokenChars)}. 
 {ID}   :  {token, analyze(TokenChars)}. 
 
+%Caracteres Especiales
 [\s\t\r]+         :  {token, {space, TokenChars}}. 
 [\n]+             :  {token, {breakLine, TokenChars}}.
+
+% Comentarios
 //[^\n]*|/\*(.|\n|\s|\t|\r)*\*/             :  {token, {comment, TokenChars}}.
-\*|\+|\/|\-|=|\+\+|\-\-|\*\*                 :  {token, {operadores, TokenChars}}.
+
+% Operadores/Puntuación
+\*|\+|\/|\-|=                :  {token, {operadores, TokenChars}}.
 ;|\.|,|\(|\)              :  {token, {puntuacion, TokenChars}}.
+
+% Strings
 (\"|\')[^\"|^\']*(\"|\')         :  {token, {string, TokenChars}}.
 .               :  {token, {mistake, TokenChars}}.
 

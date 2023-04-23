@@ -14,11 +14,9 @@ defmodule Evi1 do
           :identifier -> "<code style=\"color:lightblue\">#{to_string(cl)}</code>"
           :operadores -> "<code style=\"color:white\">#{to_string(cl)}</code>"
           :puntuacion -> "<code style=\"color:white\">#{to_string(cl)}</code>"
-          :string -> "<code style=\"color:purple\">#{to_string(cl)}</code>"
-          :integer -> "<code style=\"color:lightgreen\">#{to_string(cl)}</code>"
-          :float -> "<code style=\"color:lightgreen\">#{to_string(cl)}</code>"
+          :string -> "<code style=\"color:#E5AA70\">#{to_string(cl)}</code>"
+          :number -> "<code style=\"color:lightgreen\">#{to_string(cl)}</code>"
           :comment -> "<code style=\"color:green\">#{to_string(cl)}</code>"
-          :breakLine -> "\n"
           _ -> "<code style=\"color:red\">#{to_string(cl)}</code>"
         end
 
@@ -36,7 +34,8 @@ defmodule Evi1 do
         <title>Document</title>
       </head>
       <body>
-        <pre style="background-color:black; font-size:20px">
+      <pre style="background-color:black; font-size:20px">
+
       """
     htmlFin = """
       \n</pre>
