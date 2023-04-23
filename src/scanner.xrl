@@ -8,7 +8,9 @@ Rules.
 % Numeros
 {D}+(_?{D})*([eE][+-]?{D}+(_?{D})*)?n?  :  {token, {number, TokenChars}}. %entero
 [+-]?({D}+(_?{D})*\.({D}(_?{D})*)*|({D}(_?{D})*)*\.{D}+(_?{D})*)([eE][+-]?{D}+(_?{D})*)?    :  {token, {number, TokenChars}}. %float
-
+0[bB](_?[0-1])+n?                                   :   {token, {number, TokenChars}}. %Binario
+0[oO](_?[0-7])+n?                                 :   {token, {number, TokenChars}}. %Octales
+0[xX](_?[0-9a-fA-F])+n?                           :   {token, {number, TokenChars}}. %Hexadecimales 
 
 % Identificadores
 % {LM}({LM}|{D})*   :  {token, analyze(TokenChars)}. 
@@ -34,12 +36,8 @@ Erlang code.
 
 analyze(TokenChars) ->
     Up = string:lowercase(TokenChars),
-    IsKW = lists:member(Up, ["break","case","catch","class","const","continue","debugger","default","delete","do","else","export","extends","finally","for","function","if","import","in","instanceof","new","return","super","switch","this","throw","try","typeof","var","void","while","with","let","package","private","protected","public","static","await","true","false","null","else if"]),
+    IsKW = lists:member(Up, ["break","case","catch","class","const","continue","debugger","default","delete","do","else","export","extends","finally","for","function","if","import","in","instanceof","new","return","super","switch","this","throw","try","typeof","var","void","while","with","yield","enum","implements","interface","let","package","private","protected","public","static","await","true","false","null","else if"]),
     if
         IsKW -> {keyword, TokenChars};
         true -> {identifier, TokenChars}
     end.
-
-
-
-
