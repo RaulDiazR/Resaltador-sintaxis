@@ -15,8 +15,8 @@
 -file("src/scanner.xrl", 36).
 
 analyze(TokenChars) ->
-    Up = string:lowercase(TokenChars),
-    IsKW = lists:member(Up, ["abstract","arguments","await","boolean","break" ,"byte" ,"case" ,"catch","char" ,"class","const","continue","debugger","default","delete" ,"do","double" ,"else" 	,"enum" ,"eval","export" ,"extends" ,"false" ,"final","finally" ,"float" ,"for","function","goto","if","implements" ,"import","in" ,"instanceof" ,"int" ,"interface","let" ,"long","native","new","null","package" ,"private" ,"protected","public" ,"return","short" ,"static","super" ,"switch" ,"synchronized","this","throw" ,"throws" ,"transient" ,"true","try" ,"typeof","var","void","volatile","while","with","yield","Array","Date","eval","function","hasOwnProperty","Infinity","isFinite","isNaN","isPrototypeOf","length","Math","NaN","name","Number","Object","prototype","String","toString","undefined","valueOf","getClass","java","JavaArray","javaClass","JavaObject","JavaPackage","alert","all","anchor","anchors","area","assign","blur","button","checkbox","clearInterval","clearTimeout","clientInformation","close","closed","confirm","constructor","crypto","decodeURI","decodeURIComponent","defaultStatus","document","element","elements","embed","embeds","encodeURI","encodeURIComponent","escape","event","fileUpload","focus","form","forms","frame","innerHeight","innerWidth","layer","layers","link","location","mimeTypes","navigate","navigator","frames","frameRate","hidden","history","image","images","offscreenBuffering","open","opener","option","outerHeight","outerWidth","packages","pageXOffset","pageYOffset","parent","parseFloat","parseInt","password","pkcs11","plugin","prompt","propertyIsEnum","radio","reset","screenX","screenY","scroll","secure","select","self","setInterval","setTimeout","status","submit","taint","text","textarea","top","unescape","untaint","window","onblur","onclick","onerror","onfocus","onkeydown","onkeypress","onkeyup","onmouseover","onload","onmouseup","onmousedown","onsubmit"]),
+
+    IsKW = lists:member(TokenChars, ["abstract","arguments","await","boolean","break" ,"byte" ,"case" ,"catch","char" ,"class","const","continue","debugger","default","delete" ,"do","double" ,"else" 	,"enum" ,"eval","export" ,"extends" ,"false" ,"final","finally" ,"float" ,"for","function","goto","if","implements" ,"import","in" ,"instanceof" ,"int" ,"interface","let" ,"long","native","new","null","package" ,"private" ,"protected","public" ,"return","short" ,"static","super" ,"switch" ,"synchronized","this","throw" ,"throws" ,"transient" ,"true","try" ,"typeof","var","void","volatile","while","with","yield","Array","Date","eval","function","hasOwnProperty","Infinity","isFinite","isNaN","isPrototypeOf","length","Math","NaN","name","Number","Object","prototype","String","toString","undefined","valueOf","getClass","java","JavaArray","javaClass","JavaObject","JavaPackage","alert","all","anchor","anchors","area","assign","blur","button","checkbox","clearInterval","clearTimeout","clientInformation","close","closed","confirm","constructor","crypto","decodeURI","decodeURIComponent","defaultStatus","document","console","element","elements","embed","embeds","encodeURI","encodeURIComponent","escape","event","fileUpload","focus","form","forms","frame","innerHeight","innerWidth","layer","layers","link","location","mimeTypes","navigate","navigator","frames","frameRate","hidden","history","image","images","offscreenBuffering","open","opener","option","outerHeight","outerWidth","packages","pageXOffset","pageYOffset","parent","parseFloat","parseInt","password","pkcs11","plugin","prompt","propertyIsEnum","radio","reset","screenX","screenY","scroll","secure","select","self","setInterval","setTimeout","status","submit","taint","text","textarea","top","unescape","untaint","window","onblur","onclick","onerror","onfocus","onkeydown","onkeypress","onkeyup","onmouseover","onload","onmouseup","onmousedown","onsubmit"]),
     if
         IsKW -> {keyword, TokenChars};
         true -> {identifier, TokenChars}
@@ -35,7 +35,7 @@ analyze(TokenChars) ->
 % ,"getClass","java","JavaArray","javaClass","JavaObject","JavaPackage"
 
 % Other Reserved Words
-% ,"alert","all","anchor","anchors","area","assign","blur","button","checkbox","clearInterval","clearTimeout","clientInformation","close","closed","confirm","constructor","crypto","decodeURI","decodeURIComponent","defaultStatus","document","element","elements","embed"","embeds","encodeURI","encodeURIComponent","escape","event","fileUpload","focus","form","forms","frame","innerHeight","innerWidth","layer","layers","link","location","mimeTypes","navigate","navigator","frames","frameRate","hidden","history","image","images","offscreenBuffering","open","opener","option","outerHeight","outerWidth","packages","pageXOffset","pageYOffset","parent","parseFloat","parseInt","password","pkcs11","plugin","prompt","propertyIsEnum","radio","reset","screenX","screenY","scroll","secure","select","self","setInterval","setTimeout","status","submit","taint","text","textarea","top","unescape","untaint","window"
+% ,"alert","all","anchor","anchors","area","assign","blur","button","checkbox","clearInterval","clearTimeout","clientInformation","close","closed","confirm","constructor","crypto","decodeURI","decodeURIComponent","defaultStatus","document","console","element","elements","embed"","embeds","encodeURI","encodeURIComponent","escape","event","fileUpload","focus","form","forms","frame","innerHeight","innerWidth","layer","layers","link","location","mimeTypes","navigate","navigator","frames","frameRate","hidden","history","image","images","offscreenBuffering","open","opener","option","outerHeight","outerWidth","packages","pageXOffset","pageYOffset","parent","parseFloat","parseInt","password","pkcs11","plugin","prompt","propertyIsEnum","radio","reset","screenX","screenY","scroll","secure","select","self","setInterval","setTimeout","status","submit","taint","text","textarea","top","unescape","untaint","window"
 
 % HTML Event Handlers
 % ,"onblur","onclick","onerror","onfocus","onkeydown","onkeypress","onkeyup","onmouseover","onload","onmouseup","onmousedown","onsubmit"
@@ -599,13 +599,7 @@ yystate(44, [C|Ics], Line, Tlen, Action, Alen) when C >= 0, C =< 9 ->
     yystate(44, Ics, Line, Tlen+1, Action, Alen);
 yystate(44, [C|Ics], Line, Tlen, Action, Alen) when C >= 11, C =< 41 ->
     yystate(44, Ics, Line, Tlen+1, Action, Alen);
-yystate(44, [C|Ics], Line, Tlen, Action, Alen) when C >= 43, C =< 46 ->
-    yystate(44, Ics, Line, Tlen+1, Action, Alen);
-yystate(44, [C|Ics], Line, Tlen, Action, Alen) when C >= 48, C =< 93 ->
-    yystate(44, Ics, Line, Tlen+1, Action, Alen);
-yystate(44, [C|Ics], Line, Tlen, Action, Alen) when C >= 95, C =< 123 ->
-    yystate(44, Ics, Line, Tlen+1, Action, Alen);
-yystate(44, [C|Ics], Line, Tlen, Action, Alen) when C >= 125 ->
+yystate(44, [C|Ics], Line, Tlen, Action, Alen) when C >= 43 ->
     yystate(44, Ics, Line, Tlen+1, Action, Alen);
 yystate(44, Ics, Line, Tlen, Action, Alen) ->
     {Action,Alen,Tlen,Ics,Line,44};
@@ -721,6 +715,18 @@ yystate(29, Ics, Line, Tlen, _, _) ->
     {14,Tlen,Ics,Line,29};
 yystate(28, [47|Ics], Line, Tlen, Action, Alen) ->
     yystate(36, Ics, Line, Tlen+1, Action, Alen);
+yystate(28, [42|Ics], Line, Tlen, Action, Alen) ->
+    yystate(28, Ics, Line, Tlen+1, Action, Alen);
+yystate(28, [10|Ics], Line, Tlen, Action, Alen) ->
+    yystate(44, Ics, Line+1, Tlen+1, Action, Alen);
+yystate(28, [C|Ics], Line, Tlen, Action, Alen) when C >= 0, C =< 9 ->
+    yystate(44, Ics, Line, Tlen+1, Action, Alen);
+yystate(28, [C|Ics], Line, Tlen, Action, Alen) when C >= 11, C =< 41 ->
+    yystate(44, Ics, Line, Tlen+1, Action, Alen);
+yystate(28, [C|Ics], Line, Tlen, Action, Alen) when C >= 43, C =< 46 ->
+    yystate(44, Ics, Line, Tlen+1, Action, Alen);
+yystate(28, [C|Ics], Line, Tlen, Action, Alen) when C >= 48 ->
+    yystate(44, Ics, Line, Tlen+1, Action, Alen);
 yystate(28, Ics, Line, Tlen, Action, Alen) ->
     {Action,Alen,Tlen,Ics,Line,28};
 yystate(27, Ics, Line, Tlen, _, _) ->

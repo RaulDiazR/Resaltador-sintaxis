@@ -10,7 +10,7 @@ defmodule Evi1 do
       |> IO.inspect()
       |> Enum.map(fn {token, cl} ->
         case token do
-          :keyword -> "<code style=\"color:blue\">#{to_string(cl)}</code>"
+          :keyword -> "<code style=\"color:#0047AB\">#{to_string(cl)}</code>"
           :identifier -> "<code style=\"color:lightblue\">#{to_string(cl)}</code>"
           :operadores -> "<code style=\"color:white\">#{to_string(cl)}</code>"
           :puntuacion -> "<code style=\"color:white\">#{to_string(cl)}</code>"
