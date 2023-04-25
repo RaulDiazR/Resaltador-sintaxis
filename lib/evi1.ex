@@ -17,6 +17,7 @@ defmodule Evi1 do
           :string -> "<code style=\"color:#E5AA70\">#{to_string(cl)}</code>"
           :number -> "<code style=\"color:lightgreen\">#{to_string(cl)}</code>"
           :comment -> "<code style=\"color:green\">#{to_string(cl)}</code>"
+          :regex -> "<code style=\"color:#FFD700\">#{to_string(cl)}</code>"
           _ -> "<code style=\"color:red\">#{to_string(cl)}</code>"
         end
 
