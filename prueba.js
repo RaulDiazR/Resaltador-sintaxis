@@ -1,21 +1,25 @@
-let text = "We are the so-called "Vikings" from the north.";
+const name = "Alice";
+const greeting = `Hello, ${name}!`;
+console.log(greeting); // output: "Hello, Alice!"
 
-let text = "We are the so-called \"Vikings\" from the north."; 
 
-let text= 'It\'s alright.';
+const name = "Bob";
+const greeting = "Hello, " + name + "!";
+console.log(greeting); // output: "Hello, Bob!"
 
-let text = "The character \\ is called backslash.";
+const age = 30;
+const message = "I am " + age + " years old.";
+console.log(message); // output: "I am 30 years old."
 
-document.getElementById("demo").innerHTML =
-"Hello Dolly!"; 
+function getFullName(firstName, lastName) {
+   return `${firstName} ${lastName}`;
+ }
+ const firstName = "John";
+ const lastName = "Doe";
+ const fullName = `My name is ${getFullName(firstName, lastName)}.`;
+ console.log(fullName); // output: "My name is John Doe."
 
-document.getElementById("demo").innerHTML = "Hello \ Dolly!";
-
-document.getElementById("demo").innerHTML = "Hello " + "Dolly!";
-
-let x = new String("John");
-let y = new String("John");
-
-let answer1 = "It's alright";
-let answer2 = "He is called 'Johnny'";
-let answer3 = 'He is called "Johnny"';
+ const x = 10;
+const y = 5;
+const sum = `${x} + ${y} = ${x + y}`;
+console.log(sum); // output: "10 + 5 = 15"
