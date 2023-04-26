@@ -1,8 +1,14 @@
 defmodule Evi1 do
 
-  def exec() do
+  # def main(args) do
+  #   IO.inspect(args)
+  #   [inputfile, outputfile] = args
+  # end
+
+  def main(args) do
+    [inputfile, outputfile] = args
     contenido = (
-      File.read("prueba.js")
+      File.read(inputfile)
       |> elem(1)
       |> to_charlist()
       |> :scanner.string()
@@ -45,7 +51,7 @@ defmodule Evi1 do
       """
 
 
-    File.write("resultado.html", htmlIni <> contenido <> htmlFin )
+    File.write(outputfile, htmlIni <> contenido <> htmlFin )
 
   end
 
