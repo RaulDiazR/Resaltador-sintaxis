@@ -17,7 +17,7 @@ Rules.
 {ID}   :  {token, analyze(TokenChars)}. 
 
 %Caracteres Especiales
-[\s\t\r]+         :  {token, {space, TokenChars}}. 
+[\b\f\r\t\e\v\s\d]+         :  {token, {special, TokenChars}}. 
 [\n]+             :  {token, {breakLine, TokenChars}}.
 
 % Comentarios
@@ -25,10 +25,11 @@ Rules.
 \/\*([^*]*\*+[^*/])*[^*]*\*+\/ :  {token, {comment, TokenChars}}.
 
 % Operadores/Puntuación
-\{|\(|\)|\[|\]|\.|\.\.\.|\;|\,|\<|\>|\<\=|\>\=|\=\=|\!\=|\=\=\=|\!\=\=|\+|\-|\*|\*\*|\+\+|\-\-|\<\<|\>\>|\>\>\>|\&|\||\^|\!|\~|\&\&|\|\||\?\?|\?|\:|\=|\+\=|\-\=|\*\=|\*\*\=|\<\<\=|\>\>\=|\>\>\>\=|\&\=|\|\=|\^\=|\&\&\=|\|\|\=|\?\?\=|\=\>    :  {token, {operadores, TokenChars}}. %operadores
+\\|\#|\{|\(|\)|\[|\]|\.|\.\.\.|\;|\,|\<|\>|\<\=|\>\=|\=\=|\!\=|\=\=\=|\!\=\=|\+|\-|\*|\*\*|\+\+|\-\-|\<\<|\>\>|\>\>\>|\&|\||\^|\!|\~|\&\&|\|\||\?\?|\?|\:|\=|\+\=|\-\=|\*\=|\*\*\=|\<\<\=|\>\>\=|\>\>\>\=|\&\=|\|\=|\^\=|\&\&\=|\|\|\=|\?\?\=|\=\>    :  {token, {operadores, TokenChars}}. %operadores
 
 |\%|\%\=       :  {token, {operadores, TokenChars}}. %operadores con %
 \/|\/\=|\}      :  {token, {operadores, TokenChars}}. %operadores EXTRA
+
 
 %Expresiones Regulares
 /[^\n]*/(g|i)?      :  {token, {regex, TokenChars}}.
@@ -66,3 +67,7 @@ analyze(TokenChars) ->
 
 % HTML Event Handlers
 % ,"onblur","onclick","onerror","onfocus","onkeydown","onkeypress","onkeyup","onmouseover","onload","onmouseup","onmousedown","onsubmit"
+
+% Escape Sequences
+% \b\f\n\r\t\e\v\s\d
+

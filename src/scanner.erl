@@ -12,7 +12,7 @@
 -export([format_error/1]).
 
 %% User code. This is placed here to allow extra attributes.
--file("src/scanner.xrl", 42).
+-file("src/scanner.xrl", 43).
 
 analyze(TokenChars) ->
 
@@ -39,6 +39,11 @@ analyze(TokenChars) ->
 
 % HTML Event Handlers
 % ,"onblur","onclick","onerror","onfocus","onkeydown","onkeypress","onkeyup","onmouseover","onload","onmouseup","onmousedown","onsubmit"
+
+% Escape Sequences
+% \b\f\n\r\t\e\v\s\d
+
+
 -file("d:/Elixir/Erlang OTP/lib/parsetools-2.4/include/leexinc.hrl", 14).
 
 format_error({illegal,S}) -> ["illegal characters ",io_lib:write_string(S)];
@@ -330,7 +335,7 @@ adjust_line(T, A, [_|Cs], L) ->
 %% return signal either an unrecognised character or end of current
 %% input.
 
--file("src/scanner.erl", 333).
+-file("src/scanner.erl", 337).
 yystate() -> 83.
 
 yystate(90, [C|Ics], Line, Tlen, Action, Alen) when C >= 48, C =< 57 ->
@@ -377,6 +382,8 @@ yystate(84, [C|Ics], Line, Tlen, _, _) when C >= 48, C =< 57 ->
     yystate(84, Ics, Line, Tlen+1, 0, Tlen);
 yystate(84, Ics, Line, Tlen, _, _) ->
     {0,Tlen,Ics,Line,84};
+yystate(83, [127|Ics], Line, Tlen, _, _) ->
+    yystate(79, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [126|Ics], Line, Tlen, _, _) ->
     yystate(75, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [125|Ics], Line, Tlen, _, _) ->
@@ -394,7 +401,7 @@ yystate(83, [94|Ics], Line, Tlen, _, _) ->
 yystate(83, [93|Ics], Line, Tlen, _, _) ->
     yystate(75, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [92|Ics], Line, Tlen, _, _) ->
-    yystate(87, Ics, Line, Tlen+1, 11, Tlen);
+    yystate(75, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [91|Ics], Line, Tlen, _, _) ->
     yystate(75, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [64|Ics], Line, Tlen, _, _) ->
@@ -438,26 +445,28 @@ yystate(83, [37|Ics], Line, Tlen, _, _) ->
 yystate(83, [36|Ics], Line, Tlen, _, _) ->
     yystate(11, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [35|Ics], Line, Tlen, _, _) ->
-    yystate(87, Ics, Line, Tlen+1, 11, Tlen);
+    yystate(75, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [34|Ics], Line, Tlen, _, _) ->
     yystate(19, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [33|Ics], Line, Tlen, _, _) ->
     yystate(55, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [32|Ics], Line, Tlen, _, _) ->
     yystate(79, Ics, Line, Tlen+1, 11, Tlen);
-yystate(83, [13|Ics], Line, Tlen, _, _) ->
+yystate(83, [27|Ics], Line, Tlen, _, _) ->
     yystate(79, Ics, Line, Tlen+1, 11, Tlen);
-yystate(83, [11|Ics], Line, Tlen, _, _) ->
-    yystate(87, Ics, Line, Tlen+1, 11, Tlen);
-yystate(83, [12|Ics], Line, Tlen, _, _) ->
-    yystate(87, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [10|Ics], Line, Tlen, _, _) ->
     yystate(71, Ics, Line+1, Tlen+1, 11, Tlen);
+yystate(83, [8|Ics], Line, Tlen, _, _) ->
+    yystate(79, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [9|Ics], Line, Tlen, _, _) ->
     yystate(79, Ics, Line, Tlen+1, 11, Tlen);
-yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 0, C =< 8 ->
+yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 0, C =< 7 ->
     yystate(87, Ics, Line, Tlen+1, 11, Tlen);
-yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 14, C =< 31 ->
+yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 11, C =< 13 ->
+    yystate(79, Ics, Line, Tlen+1, 11, Tlen);
+yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 14, C =< 26 ->
+    yystate(87, Ics, Line, Tlen+1, 11, Tlen);
+yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 28, C =< 31 ->
     yystate(87, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 49, C =< 57 ->
     yystate(44, Ics, Line, Tlen+1, 11, Tlen);
@@ -465,7 +474,7 @@ yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 65, C =< 90 ->
     yystate(11, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 97, C =< 122 ->
     yystate(11, Ics, Line, Tlen+1, 11, Tlen);
-yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 127 ->
+yystate(83, [C|Ics], Line, Tlen, _, _) when C >= 128 ->
     yystate(87, Ics, Line, Tlen+1, 11, Tlen);
 yystate(83, Ics, Line, Tlen, _, _) ->
     {11,Tlen,Ics,Line,83};
@@ -487,11 +496,17 @@ yystate(80, [C|Ics], Line, Tlen, Action, Alen) when C >= 48, C =< 57 ->
     yystate(80, Ics, Line, Tlen+1, Action, Alen);
 yystate(80, Ics, Line, Tlen, Action, Alen) ->
     {Action,Alen,Tlen,Ics,Line,80};
+yystate(79, [127|Ics], Line, Tlen, _, _) ->
+    yystate(79, Ics, Line, Tlen+1, 6, Tlen);
 yystate(79, [32|Ics], Line, Tlen, _, _) ->
     yystate(79, Ics, Line, Tlen+1, 6, Tlen);
-yystate(79, [13|Ics], Line, Tlen, _, _) ->
+yystate(79, [27|Ics], Line, Tlen, _, _) ->
+    yystate(79, Ics, Line, Tlen+1, 6, Tlen);
+yystate(79, [8|Ics], Line, Tlen, _, _) ->
     yystate(79, Ics, Line, Tlen+1, 6, Tlen);
 yystate(79, [9|Ics], Line, Tlen, _, _) ->
+    yystate(79, Ics, Line, Tlen+1, 6, Tlen);
+yystate(79, [C|Ics], Line, Tlen, _, _) when C >= 11, C =< 13 ->
     yystate(79, Ics, Line, Tlen+1, 6, Tlen);
 yystate(79, Ics, Line, Tlen, _, _) ->
     {6,Tlen,Ics,Line,79};
@@ -1331,7 +1346,7 @@ yyaction_5(TokenChars) ->
 -compile({inline,yyaction_6/1}).
 -file("src/scanner.xrl", 18).
 yyaction_6(TokenChars) ->
-     { token, { space, TokenChars } } .
+     { token, { special, TokenChars } } .
 
 -compile({inline,yyaction_7/1}).
 -file("src/scanner.xrl", 19).
@@ -1364,27 +1379,27 @@ yyaction_12(TokenChars) ->
      { token, { operadores, TokenChars } } .
 
 -compile({inline,yyaction_13/1}).
--file("src/scanner.xrl", 32).
+-file("src/scanner.xrl", 33).
 yyaction_13(TokenChars) ->
      { token, { regex, TokenChars } } .
 
 -compile({inline,yyaction_14/1}).
--file("src/scanner.xrl", 35).
+-file("src/scanner.xrl", 36).
 yyaction_14(TokenChars) ->
      { token, { string, TokenChars } } .
 
 -compile({inline,yyaction_15/1}).
--file("src/scanner.xrl", 36).
+-file("src/scanner.xrl", 37).
 yyaction_15(TokenChars) ->
      { token, { string, TokenChars } } .
 
 -compile({inline,yyaction_16/1}).
--file("src/scanner.xrl", 37).
+-file("src/scanner.xrl", 38).
 yyaction_16(TokenChars) ->
      { token, { string, TokenChars } } .
 
 -compile({inline,yyaction_17/1}).
--file("src/scanner.xrl", 38).
+-file("src/scanner.xrl", 39).
 yyaction_17(TokenChars) ->
      { token, { mistake, TokenChars } } .
 
