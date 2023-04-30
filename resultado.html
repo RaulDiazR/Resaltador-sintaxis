@@ -7,12 +7,36 @@
   <title>Document</title>
 </head>
 <body>
-<pre style="background-color:black; font-size:20px">
+<pre style="background-color:black; font-size:20px; color:white">
 
-<code style="color:#0047AB">const</code><code style="color:red"> </code><code style="color:red">π</code><code style="color:red"> </code><code style="color:white">=</code><code style="color:red"> </code><code style="color:lightgreen">3.14159</code><code style="color:white">;</code><code style="color:red"></code><code style="color:red">
-</code><code style="color:#0047AB">const</code><code style="color:red"> </code><code style="color:red">λ</code><code style="color:red"> </code><code style="color:white">=</code><code style="color:red"> </code><code style="color:white">(</code><code style="color:lightblue">x</code><code style="color:white">,</code><code style="color:red"> </code><code style="color:lightblue">y</code><code style="color:white">)</code><code style="color:red"> </code><code style="color:white">=></code><code style="color:red"> </code><code style="color:lightblue">x</code><code style="color:red"> </code><code style="color:white">+</code><code style="color:red"> </code><code style="color:lightblue">y</code><code style="color:white">;</code><code style="color:red"></code><code style="color:red">
-</code><code style="color:#0047AB">const</code><code style="color:red"> </code><code style="color:red">п</code><code style="color:red">р</code><code style="color:red">и</code><code style="color:red">в</code><code style="color:red">е</code><code style="color:red">т</code><code style="color:red"> </code><code style="color:white">=</code><code style="color:red"> </code><code style="color:#E5AA70">'\u{1F642}.'</code><code style="color:white">;</code><code style="color:red"></code><code style="color:red">
-</code>
+<code style="color:#0047AB">let</code> <code style="color:lightblue">x</code> <code style="color:white">=</code> <code style="color:lightgreen">10</code><code style="color:white">;</code>
+<code style="color:#0047AB">if</code> <code style="color:white">(</code><code style="color:lightblue">x</code> <code style="color:white">></code> <code style="color:lightgreen">5</code><code style="color:white">)</code> <code style="color:white">{</code>
+  <code style="color:lightblue">console</code><code style="color:white">.</code><code style="color:lightblue">log</code><code style="color:white">(</code><code style="color:#E5AA70">'x is greater than 5'</code><code style="color:white">)</code><code style="color:white">;</code>
+<code style="color:white">}</code>
+
+<code style="color:#0047AB">function</code> <code style="color:lightblue">add</code><code style="color:white">(</code><code style="color:lightblue">a</code><code style="color:white">,</code> <code style="color:lightblue">b</code><code style="color:white">)</code> <code style="color:white">{</code>
+   <code style="color:#0047AB">return</code> <code style="color:lightblue">a</code> <code style="color:white">+</code> <code style="color:lightblue">b</code><code style="color:white">;</code>
+ <code style="color:white">}</code>
+ <code style="color:lightblue">console</code><code style="color:white">.</code><code style="color:lightblue">log</code><code style="color:white">(</code><code style="color:lightblue">add</code><code style="color:white">(</code><code style="color:lightgreen">2</code><code style="color:white">,</code> <code style="color:lightgreen">3</code><code style="color:white">)</code><code style="color:white">)</code><code style="color:white">;</code> <code style="color:green">// Output: 5</code>
+
+<code style="color:#0047AB">let</code> <code style="color:lightblue">x</code> <code style="color:white">=</code> <code style="color:#0047AB">true</code><code style="color:white">;</code>
+<code style="color:#0047AB">let</code> <code style="color:lightblue">y</code> <code style="color:white">=</code> <code style="color:#0047AB">false</code><code style="color:white">;</code>
+<code style="color:lightblue">console</code><code style="color:white">.</code><code style="color:lightblue">log</code><code style="color:white">(</code><code style="color:lightblue">x</code> <code style="color:white">&&</code> <code style="color:lightblue">y</code><code style="color:white">)</code><code style="color:white">;</code> <code style="color:green">// Output: false</code>
+
+<code style="color:#0047AB">class</code> <code style="color:lightblue">Rectangle</code> <code style="color:white">{</code>
+   <code style="color:#0047AB">constructor</code><code style="color:white">(</code><code style="color:lightblue">height</code><code style="color:white">,</code> <code style="color:lightblue">width</code><code style="color:white">)</code> <code style="color:white">{</code>
+     <code style="color:#0047AB">this</code><code style="color:white">.</code><code style="color:lightblue">height</code> <code style="color:white">=</code> <code style="color:lightblue">height</code><code style="color:white">;</code>
+     <code style="color:#0047AB">this</code><code style="color:white">.</code><code style="color:lightblue">width</code> <code style="color:white">=</code> <code style="color:lightblue">width</code><code style="color:white">;</code>
+   <code style="color:white">}</code>
+ 
+   <code style="color:lightblue">get</code> <code style="color:lightblue">area</code><code style="color:white">(</code><code style="color:white">)</code> <code style="color:white">{</code>
+     <code style="color:#0047AB">return</code> <code style="color:#0047AB">this</code><code style="color:white">.</code><code style="color:lightblue">height</code> <code style="color:white">*</code> <code style="color:#0047AB">this</code><code style="color:white">.</code><code style="color:lightblue">width</code><code style="color:white">;</code>
+   <code style="color:white">}</code>
+ <code style="color:white">}</code>
+ 
+ <code style="color:#0047AB">const</code> <code style="color:lightblue">rect</code> <code style="color:white">=</code> <code style="color:#0047AB">new</code> <code style="color:lightblue">Rectangle</code><code style="color:white">(</code><code style="color:lightgreen">5</code><code style="color:white">,</code> <code style="color:lightgreen">10</code><code style="color:white">)</code><code style="color:white">;</code>
+ <code style="color:lightblue">console</code><code style="color:white">.</code><code style="color:lightblue">log</code><code style="color:white">(</code><code style="color:lightblue">rect</code><code style="color:white">.</code><code style="color:lightblue">area</code><code style="color:white">)</code><code style="color:white">;</code> <code style="color:green">// Output: 50</code>
+ 
 </pre>
 </body>
 </html>
