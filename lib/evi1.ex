@@ -13,7 +13,7 @@ defmodule Evi1 do
       |> to_charlist()
       |> :scanner.string()
       |> elem(1)
-      |> IO.inspect()
+      # |> IO.inspect()
       |> Enum.map(fn {token, cl} ->
         case token do
           :keyword -> "<code style=\"color:#0047AB\">#{to_string(cl)}</code>"
